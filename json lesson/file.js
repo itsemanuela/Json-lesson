@@ -18,9 +18,17 @@ salvabtn.addEventListener("click", function () {
   localStorage.setItem("dati presenti", salvadati);
   verifico();
 });
+
+removebtn.addEventListener("click", function () {
+  localStorage.removeItem("dati presenti");
+  verifico();
+});
+
 const quadro = document.createElement("p");
 quadro.style.marginTop = "50px";
-quadro.style.backgroundColor = "red";
+quadro.style.backgroundColor = "blue";
+quadro.style.color = "white";
+quadro.style.fontSize = "30px";
 quadro.innerText = "sono il form";
 const form = document.querySelector("form");
 form.appendChild(quadro);
