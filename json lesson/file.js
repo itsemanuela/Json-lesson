@@ -7,9 +7,9 @@ const removebtn = document.getElementById("removebtn");
 const verifico = function () {
   let datiinmemoria = localStorage.getItem("dati presenti");
   if (datiinmemoria) {
-    console.log("ho trovato" + datiinmemoria);
+    quadro.innerText = "ho trovato:" + "" + datiinmemoria;
   } else {
-    console.log("non ho trovato niente");
+    quadro.innerText = "non c'è nulla";
   }
 };
 
@@ -18,3 +18,11 @@ salvabtn.addEventListener("click", function () {
   localStorage.setItem("dati presenti", salvadati);
   verifico();
 });
+const quadro = document.createElement("p");
+quadro.style.marginTop = "50px";
+quadro.style.backgroundColor = "red";
+quadro.innerText = "sono il form";
+const form = document.querySelector("form");
+form.appendChild(quadro);
+
+verifico();
