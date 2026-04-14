@@ -1,36 +1,39 @@
 const email = document.getElementById("exampleInputEmail1");
-const salvabtn = document.getElementById("saveBtn");
-const removebtn = document.getElementById("removebtn");
+const bottonechesalva = document.getElementById("saveBtn");
+const bottonecherimuove = document.getElementById("removebtn");
 
-//verifico dati presenti in memoria
-
-const verifico = function () {
-  let datiinmemoria = localStorage.getItem("dati presenti");
-  if (datiinmemoria) {
-    quadro.innerText = "ho trovato:" + "" + datiinmemoria;
+//verifico i dati interni
+const memoria = function () {
+  let datiinterni = localStorage.getItem("memoria dati");
+  if (datiinterni) {
+    nuovoelemento.innerText = "il risultato è :" + datiinterni;
   } else {
-    quadro.innerText = "non c'è nulla";
+    nuovoelemento.innerText = "non ci sono dati in memoria";
   }
 };
 
-salvabtn.addEventListener("click", function () {
-  let salvadati = email.value;
-  localStorage.setItem("dati presenti", salvadati);
-  verifico();
+//ora i bottone
+
+bottonechesalva.addEventListener("click", function () {
+  let datodainserire = email.value;
+  localStorage.setItem("memoria dati", datodainserire);
+  memoria();
+});
+bottonecherimuove.addEventListener("click", function () {
+  let datodarimuovere = email.value;
+  localStorage.removeItem("memoria dati");
+  memoria();
 });
 
-removebtn.addEventListener("click", function () {
-  localStorage.removeItem("dati presenti");
-  verifico();
-});
+// ora creo il quadro per appendere i dati
 
-const quadro = document.createElement("p");
-quadro.style.marginTop = "50px";
-quadro.style.backgroundColor = "blue";
-quadro.style.color = "white";
-quadro.style.fontSize = "30px";
-quadro.innerText = "sono il form";
+const nuovoelemento = document.createElement("p");
 const form = document.querySelector("form");
-form.appendChild(quadro);
+form.appendChild(nuovoelemento);
 
-verifico();
+nuovoelemento.style.marginTop = "40px";
+nuovoelemento.style.backgroundColor = "blue";
+nuovoelemento.style.padding = "50px";
+nuovoelemento.style.color = "white";
+nuovoelemento.style.fontSize = "40px";
+memoria();
