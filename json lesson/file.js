@@ -37,3 +37,24 @@ nuovoelemento.style.padding = "50px";
 nuovoelemento.style.color = "white";
 nuovoelemento.style.fontSize = "40px";
 memoria();
+
+// preparo il contenitore per il contatore dei biscotti
+let biscotti = sessionStorage.getItem("bisocotti contati") || 0;
+const contenitoreBiscotti = document.createElement("h2");
+document.body.appendChild(contenitoreBiscotti);
+contenitoreBiscotti.style.backgroundColor = "pink";
+contenitoreBiscotti.style.color = "white";
+contenitoreBiscotti.style.fontSize = "30px";
+
+// controllo il contenitore del biscotto per vedere se ce ne sono 0
+
+// aggiungo i biscotti
+
+let addbiscotto = function () {
+  biscotti++;
+  contenitoreBiscotti.innerText = "biscotti accumulati" + biscotti;
+  sessionStorage.setItem("biscotti_salvati", "+", biscotti);
+};
+
+setInterval(addbiscotto, 1000);
+contenitoreBiscotti.innerText = "Biscotti accumulati: " + "" + biscotti;
